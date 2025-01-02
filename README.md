@@ -104,56 +104,76 @@ The **Feature Flags Manager** integrates with GitLab and Confluence APIs to sync
    ```bash
    python main.py
 
-Key Functions
-Logging
-add_to_log(message): Logs activity for debugging and monitoring.
-Feature Flag Retrieval
-fetch_all_feature_flags(repo_id): Fetches all flags from a GitLab repository.
-Handles pagination to retrieve complete datasets.
-Team Assignment
-get_team_from_flag_name(flag_name): Associates a flag with a team based on its name.
-Data Consolidation
-merge_feature_flags():
-Combines feature flags from all repositories.
-Adds ownership details and updates the status (e.g., Active, Inactive, Deleted).
-Confluence Integration
-fetch_existing_table_from_confluence(page_title): Retrieves an existing table from a Confluence page.
-update_table(existing_table, new_table): Merges new data into the existing Confluence table.
-upload_table_to_confluence(html_content, page_id): Updates or creates a Confluence page with the consolidated table.
-HTML Generation
-generate_html_with_icons_and_dropdown(table):
-Converts the consolidated table to HTML.
-Adds status icons and dropdowns for detailed flag information.
-3. Process Flow
-Retrieve Feature Flags:
+# Feature Flag Management Automation
 
-Fetch all flags from repositories defined in REPOSITORY_MAP.
-Determine team ownership based on flag names.
-Consolidate Data:
+## Overview
+This script automates feature flag management by retrieving feature flags from GitLab repositories, processing the data to determine team ownership, and updating the information in Confluence. It aims to streamline the management of feature flags, enhance visibility, and improve collaboration among teams.
 
-Merge new data with existing records.
-Mark deleted flags without removing historical details.
-Upload to Confluence:
+## Key Functions
 
-Fetch the current Confluence table.
-Update the table with new data or create a new page.
-Generate Enhanced HTML:
+### Logging
+- **`add_to_log(message)`**: Logs activity for debugging and monitoring.
 
-Include icons and dropdowns for improved visualization.
-4. Output Example
+### Feature Flag Retrieval
+- **`fetch_all_feature_flags(repo_id)`**: Fetches all flags from a GitLab repository, handling pagination to retrieve complete datasets.
+
+### Team Assignment
+- **`get_team_from_flag_name(flag_name)`**: Associates a flag with a team based on its name.
+
+### Data Consolidation
+- **`merge_feature_flags()`**: Combines feature flags from all repositories, adds ownership details, and updates the status (e.g., Active, Inactive, Deleted).
+
+### Confluence Integration
+- **`fetch_existing_table_from_confluence(page_title)`**: Retrieves an existing table from a Confluence page.
+- **`update_table(existing_table, new_table)`**: Merges new data into the existing Confluence table.
+- **`upload_table_to_confluence(html_content, page_id)`**: Updates or creates a Confluence page with the consolidated table.
+
+### HTML Generation
+- **`generate_html_with_icons_and_dropdown(table)`**: Converts the consolidated table to HTML and adds status icons and dropdowns for detailed flag information.
+
+## Process Flow
+1. **Retrieve Feature Flags**:
+   - Fetch all flags from repositories defined in `REPOSITORY_MAP`.
+   - Determine team ownership based on flag names.
+
+2. **Consolidate Data**:
+   - Merge new data with existing records.
+   - Mark deleted flags without removing historical details.
+
+3. **Upload to Confluence**:
+   - Fetch the current Confluence table.
+   - Update the table with new data or create a new page.
+
+4. **Generate Enhanced HTML**:
+   - Include icons and dropdowns for improved visualization.
+
+## Output Example
 The table includes:
+- **Feature Name**: Name of the feature flag.
+- **Description**: Detailed description (if available).
+- **Ownership**: Team or user responsible for the flag.
+- **Status**: Current status (Active 🟢, Inactive ⚪, Deleted 🔴).
+- **Repository Details**: Expandable dropdowns for flag-specific data.
 
-Feature Name: Name of the feature flag.
-Description: Detailed description (if available).
-Ownership: Team or user responsible for the flag.
-Status: Current status (Active 🟢, Inactive ⚪, Deleted 🔴).
-Repository Details: Expandable dropdowns for flag-specific data.
-5. Confluence Page Structure
-Page Title: Feature Flag Dashboard
-Columns:
-Feature toggle name
-Feature description
-Owned by
-Status
-Repository-specific columns with status and detailed information.
+## Confluence Page Structure
+- **Page Title**: Feature Flag Dashboard
+- **Columns**:
+  - Feature toggle name
+  - Feature description
+  - Owned by
+  - Status
+  - Repository-specific columns with status and detailed information.
+
+## Improvements
+- Retain historical data for deleted flags.
+- Include team assignments and enhance descriptions.
+- Add status icons for clarity.
+
+For further assistance, review the script logs or contact the development team.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
