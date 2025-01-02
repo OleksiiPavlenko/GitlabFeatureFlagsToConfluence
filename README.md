@@ -1,4 +1,4 @@
-# GitlabFeatureFlagToConfluence
+# GitlabFeatureFlagsToConfluence
 # Feature Flags Manager
 
 **Feature Flags Manager** is a tool designed to streamline the management of feature flags in your projects. It automates the synchronization of feature states between your codebase and documentation in Confluence, enabling teams to easily track the status of features and ownership responsibilities.
