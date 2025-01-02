@@ -104,13 +104,6 @@ The **Feature Flags Manager** integrates with GitLab and Confluence APIs to sync
    ```bash
    python main.py
 
-# Feature Flag Management Automation
-
-## Overview
-This script automates feature flag management by retrieving feature flags from GitLab repositories, processing the data to determine team ownership, and updating the information in Confluence. It aims to streamline the management of feature flags, enhance visibility, and improve collaboration among teams.
-
-## Key Functions
-
 ### Logging
 - **`add_to_log(message)`**: Logs activity for debugging and monitoring.
 
